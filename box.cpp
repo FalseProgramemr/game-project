@@ -51,41 +51,6 @@ int MENU::choice(){
     return exit_value;
 }
 
-int MARKET::choice(){
-    WINDOW* fin= BOX::modify_box(tag);
-    keypad(fin,true);
-    string choice[4]{tag2,tag3,tag4,tag5};
-    int user_typing, h_light=0, exit_value;
-    bool found=false;
-
-    while(1 && !found){
-        for(int i=0;i<4;i++){
-            if(i==h_light){
-                wattron(fin,A_REVERSE);
-            }
-            mvwprintw(fin,i+1,1,choice[i].c_str());
-            wattroff(fin,A_REVERSE);
-        }
-        user_typing=wgetch(fin);
-
-        if(user_typing==KEY_UP){
-            h_light--;
-            if(h_light==-1)
-                h_light=0;    
-        }else if(user_typing==KEY_DOWN){
-            h_light++;
-            if(h_light==4)
-                h_light=3;
-        }
-        if(user_typing=='k'){
-            found=true;
-            clear();
-            exit_value=h_light+1;
-        }
-    }
-    return exit_value;
-}
-
 WINDOW* MAP::create_map(){
     WINDOW* fin=BOX::create_box();
     mvwprintw(fin,22,1,"[]");

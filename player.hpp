@@ -10,7 +10,7 @@ class player {
         WINDOW * curwin;
 
     public:
-        int life, money, salto;
+        int life, money, salto, healthPrice, jumpPrice;
         player(WINDOW * win, int y, int x, char c);
 
         void healthup();

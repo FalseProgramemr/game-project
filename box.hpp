@@ -30,21 +30,6 @@ class MENU : public BOX{
     }
     int choice();
 };
-
-class MARKET : public BOX{
-    protected:
-        char tag[20], tag2[20], tag3[20], tag4[20], tag5[20]; 
-    public:
-    MARKET(int h, int w, int y, int x, char tag[], char tag2[], char tag3[], char tag4[], char tag5[]) : BOX(h, w, y, x){
-        strcpy(this->tag,tag);
-        strcpy(this->tag2,tag2);
-        strcpy(this->tag3,tag3);
-        strcpy(this->tag4,tag4);
-        strcpy(this->tag5,tag5);
-    }
-    int choice();
-};
-
 class MAP: public BOX{
     protected:
     bool ladder_on, holes_on, two_holes, two_ladders, cloud, day;

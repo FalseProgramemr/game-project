@@ -3,8 +3,8 @@
 #include <cstring>
 #include <string>
 #include <ctime>
-#include "box.hpp"
-#include "player.hpp"
+#include "market.hpp"
+
 using namespace std;
 typedef void * (*THREADFUNCPTR)(void *);
 
@@ -152,23 +152,24 @@ void game_flow(int y_scr, int x_scr, WINDOW* map, bool next_lvl, class BOX box,
         strcpy(v1,"Market");
         strcpy(v2,"Health boost");
         strcpy(v3,"Jump boost");
-        strcpy(v4,"Damage boost");
-        strcpy(v5,"Return to the game");
-        MARKET market(y_scr/2,x_scr/2,y_scr/4,x_scr/4,v1,v2,v3,v4,v5);
-        int mx=market.choice();
+        strcpy(v4,"Return to the game");
+        MENU marketMenu(y_scr/2,x_scr/2,y_scr/4,x_scr/4,v1,v2,v3,v4);
+        int mx=marketMenu.choice();
         if(mx==1){
             // aggiungi 1 di vita
-            p->healthup();
+            buyHealth(p);
             WINDOW* map_used=map_generatior(map1,map2,map3,map4,map5,map6,
                                         map7,map8,map9,map10,seed);
             game_flow(y_scr,x_scr,map,true,box,map1,map2,map3,map4,map5,
                     map6,map7,map8,map9,map10,seed);
         }else if(mx==2){
             // salta 1 pixel in più
-            p->salto=p->salto+1;
+            buyJumpboost(p);
+            WINDOW* map_used=map_generatior(map1,map2,map3,map4,map5,map6,
+                                        map7,map8,map9,map10,seed);
+            game_flow(y_scr,x_scr,map,true,box,map1,map2,map3,map4,map5,
+                    map6,map7,map8,map9,map10,seed);
         }else if(mx==3){
-            // fa 1 di danno in più
-        }else if(mx==4){
             // torna alla partita
             WINDOW* map_used=map_generatior(map1,map2,map3,map4,map5,map6,
                                         map7,map8,map9,map10,seed);
@@ -228,9 +229,20 @@ int main(int argc, char** argv){
         strcpy(v1,"Market");
         strcpy(v2,"Health boost");
         strcpy(v3,"Jump boost");
-        strcpy(v4,"Damage boost");
-        strcpy(v5,"Return to menu");
-        MARKET market(y_scr/2,x_scr/2,y_scr/4,x_scr/4,v1,v2,v3,v4,v5);
+        strcpy(v4,"Return to menu");
+        MENU marketMenu(y_scr/2,x_scr/2,y_scr/4,x_scr/4,v1,v2,v3,v4);
+        int mx=marketMenu.choice();
+        if(mx==1){
+            // aggiungi 1 di vita
+            
+            //buyHealth(p);
+        }else if(mx==2){
+            // salta 1 pixel in più
+            //buyJumpboost(p);
+        }else if(mx==3){
+            // torna al menu
+
+        }
     }
     endwin(); //deallocaz. memoria
     return 0;

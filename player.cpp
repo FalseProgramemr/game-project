@@ -25,6 +25,10 @@ player::player(WINDOW * win, int y, int x, char c){
 	//L'ampiezza del salto
 	salto=5;
 	
+	//prezzo della vita e del salto
+	healthPrice=20;
+	jumpPrice=20;
+	
 	//Indica le y del proiettile
 	projy=y;
 
