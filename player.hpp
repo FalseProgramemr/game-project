@@ -10,7 +10,8 @@ class player {
         WINDOW * curwin;
 
     public:
-        int life, money, salto, healthPrice, jumpPrice;
+        int life, money, salto, healthPrice, jumpPrice; //ho aggiunto healthPrice e jumpPrice qua perche
+                                                        //cambiano di volta in volta col player
         player(WINDOW * win, int y, int x, char c);
 
         void healthup();

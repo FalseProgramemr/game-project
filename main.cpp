@@ -155,7 +155,22 @@ void game_flow(int y_scr, int x_scr, WINDOW* map, bool next_lvl, class BOX box,
         strcpy(v4,"Return to the game");
         MENU marketMenu(y_scr/2,x_scr/2,y_scr/4,x_scr/4,v1,v2,v3,v4);
         int mx=marketMenu.choice();
-        if(mx==1){
+        switch (mx)
+        {
+        case 1:
+            /* code */
+            buyHealth(p);
+            break;
+        case 2:
+            buyJumpboost(p);
+            break;
+        case 3:
+            WINDOW* map_used=map_generatior(map1,map2,map3,map4,map5,map6,
+                                        map7,map8,map9,map10,seed);
+            game_flow(y_scr,x_scr,map,true,box,map1,map2,map3,map4,map5,
+                    map6,map7,map8,map9,map10,seed);
+            break;
+        }/**        if(mx==1){
             // aggiungi 1 di vita
             buyHealth(p);
             WINDOW* map_used=map_generatior(map1,map2,map3,map4,map5,map6,
@@ -175,7 +190,7 @@ void game_flow(int y_scr, int x_scr, WINDOW* map, bool next_lvl, class BOX box,
                                         map7,map8,map9,map10,seed);
             game_flow(y_scr,x_scr,map,true,box,map1,map2,map3,map4,map5,
                     map6,map7,map8,map9,map10,seed);
-        }
+        }*/
         }
     else if(cx==3){
         //salva partita
