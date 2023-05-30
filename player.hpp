@@ -1,7 +1,6 @@
 #include <iostream>
-#include <ncurses.h>
-#include <unistd.h>
-using namespace std;
+#include<ncurses.h>
+#include<unistd.h>
 
 class player {
     protected:
@@ -11,10 +10,60 @@ class player {
         WINDOW * curwin;
 
     public:
-        int life, money, salto;
-        player(WINDOW * win, int y, int x, char c, int m, int l);
+        int money, life;
+
+        //Costruttore della classe
+        player(WINDOW * win, int y=27, int x=1, char c='P', int m=400, int l=3){
+        	curwin = win;
+        	nodelay(curwin, TRUE);
+
+        	yLoc=y;
+        	xLoc = x;
+
+        	//Coordinata y dello spawn del giocatore
+        	originy=y;
+
+        	//Coordinata x dello spawn del giocatore
+        	originx=x;
+
+        	getmaxyx(curwin, yMax, xMax);
+        	keypad(curwin, true);
+        	character=c;
+
+        	//Vita del giocatore
+        	life=l;
+
+        	//Soldi del giocatore
+        	money=m;
+
+        	//Indica le y del proiettile
+        	projy=y;
+
+        	//Indica le x del proiettile
+        	projx=x;
+
+        	//Indica se un proiettile sta venendo disegnato
+        	s=false;
+
+        	//Indica l'ultima direzione in cui il giocatore è andato
+        	dir=false;
+
+        	//Blocca la direzione del proiettile
+        	dirlock=false;
+
+        	//Indica se il giocatore sta saltando
+        	j=false;
+
+        	//Stampa la vita del giocatore
+        	mvwprintw(curwin, 0, 0,"HP: %d", life);
+
+        	//Stampa i soldi del giocatore
+        	mvwprintw(curwin, 0, xMax-20,"soldi: %d", money);
+        }
 
         bool isterrain(char t);
+        bool bulletterrain(char t);
+        bool isenemy(char t);
         void mvup();
         void mvdown();
         void mvleft();
@@ -29,5 +78,4 @@ class player {
         void gravity();
         void shoot();
         int playeroutput(int input);
-        int getLife();
 };
