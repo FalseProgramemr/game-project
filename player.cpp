@@ -21,16 +21,9 @@ player::player(WINDOW * win, int y, int x, char c, int m, int l){
 
 	//Vita del giocatore
 	life=3;
-	//Danno del giocatore
-	damage=1;
-
+	
 	//Soldi del giocatore (al momento inutilizzata)
 	money=100;
-
-	//Prezzo dei vari Power Up
-	damagePrice=10;
-	healthPrice=10;
-	jumpPrice=10;
 	
 	//Indica le y del proiettile
 	projy=y;

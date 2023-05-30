@@ -11,7 +11,7 @@ class player {
         WINDOW * curwin;
 
     public:
-        int life, money, salto, damage, damagePrice, healthPrice, jumpPrice;
+        int life, money, salto;
         player(WINDOW * win, int y, int x, char c, int m, int l);
 
         bool isterrain(char t);
