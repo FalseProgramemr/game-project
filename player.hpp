@@ -1,6 +1,7 @@
 #include <iostream>
-#include<ncurses.h>
-#include<unistd.h>
+#include <ncurses.h>
+#include <unistd.h>
+using namespace std;
 
 class player {
     protected:
@@ -10,11 +11,9 @@ class player {
         WINDOW * curwin;
 
     public:
-        int life, money, salto, healthPrice, jumpPrice; //ho aggiunto healthPrice e jumpPrice qua perche
-                                                        //cambiano di volta in volta col player
-        player(WINDOW * win, int y, int x, char c);
+        int life, money, salto, damage, damagePrice, healthPrice, jumpPrice;
+        player(WINDOW * win, int y, int x, char c, int m, int l);
 
-        void healthup();
         bool isterrain(char t);
         void mvup();
         void mvdown();
@@ -30,4 +29,5 @@ class player {
         void gravity();
         void shoot();
         int playeroutput(int input);
+        int getLife();
 };

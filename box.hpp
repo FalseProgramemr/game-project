@@ -8,6 +8,7 @@ class BOX{
     protected:
     int height, width, start_y, start_x;
     public:
+    int game_scr=0;
     BOX(int h, int w, int y,int x){
         height=h;
         width=w;
@@ -30,6 +31,7 @@ class MENU : public BOX{
     }
     int choice();
 };
+
 class MAP: public BOX{
     protected:
     bool ladder_on, holes_on, two_holes, two_ladders, cloud, day;

@@ -53,8 +53,10 @@ int MENU::choice(){
 
 WINDOW* MAP::create_map(){
     WINDOW* fin=BOX::create_box();
+    string map_seed_str= to_string(map_seed);
+    mvprintw(0, 0, "mappa: %s", map_seed_str.c_str());
     mvwprintw(fin,22,1,"[]");
-    mvwprintw(fin,22,width-3,"()");
+    mvwprintw(fin,22,width-3,"{}");
     //buchi nella mappa
     for(int i=0;i<width;i++){
         for(int j=0;j<height;j++){
@@ -116,10 +118,10 @@ WINDOW* MAP::create_map(){
     //decorations
     if(cloud==true){
         //nuvole
-        mvwprintw(fin,3,6,".°(||)°.");
-        mvwprintw(fin,4,5,"((((||))))");
-        mvwprintw(fin,5,5,"((((||))))");
-        mvwprintw(fin,6,6,"'°(||)°'");
+        mvwprintw(fin,3,7,".°(||)°.");
+        mvwprintw(fin,4,6,"((((||))))");
+        mvwprintw(fin,5,6,"((((||))))");
+        mvwprintw(fin,6,7,"'°(||)°'");
 
         mvwprintw(fin,4,33,".°(||)°.");
         mvwprintw(fin,5,32,"((((||))))");
